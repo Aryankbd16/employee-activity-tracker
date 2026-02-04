@@ -1,0 +1,113 @@
+:root {
+  --header-red: #FF0000; /* Red header background */
+  --bg-cyan: #00FFFF;   /* Cyan page background */
+  --container-green: #ADFF2F; /* GreenYellow - Content container background */
+  --btn-blue: #4169E1;    /* RoyalBlue - Sign In/Report buttons */
+  --btn-action-green: #9ACD32; /* YellowGreen - Login/Start buttons */
+  --text-black: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: serif; /* "Admin", "Login" fonts look serif/slab-serif in images */
+  background-color: var(--bg-cyan);
+  overflow-x: hidden;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reusable Header Style */
+.page-header {
+  background-color: var(--header-red);
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--text-black);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Green Container Style - Common across many pages */
+.green-container {
+  background-color: var(--container-green);
+  width: 80%; /* Approximate */
+  margin: 40px auto;
+  padding: 40px;
+  min-height: 400px;
+  position: relative;
+}
+
+/* Button Styles */
+.btn {
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-black);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-blue {
+  background-color: var(--btn-blue);
+}
+
+.btn-green {
+  background-color: var(--btn-action-green);
+}
+
+.btn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Form Styles */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-label {
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 200px; /* Fixed width for alignment */
+    text-align: right;
+    padding-right: 20px;
+}
+
+.form-input {
+    flex: 1;
+    padding: 10px;
+    background-color: cyan; /* Input backgrounds are cyan in Sign In */
+    border: none;
+    font-size: 1rem;
+}
+
+/* Scrollbar for Admin page if needed */
+.scroll-container::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #888;
+}

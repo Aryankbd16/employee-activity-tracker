@@ -1,0 +1,2 @@
+Keyboard automation: False
+Mouse automation: True
