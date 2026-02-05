@@ -78,7 +78,7 @@ const UserProfile = () => {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '50px', padding: '0 50px' }}>
-          <button className="btn btn-blue">Report</button>
+          <button className="btn btn-blue"  onClick={() => navigate(`/report/${user._id}`)}>Report</button>
           <button className="btn btn-blue" onClick={() => navigate('/start-work')}>
             Start Work
           </button>

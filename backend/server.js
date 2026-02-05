@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const connectDB = require('./config/db');
+const path = require('path');
 
 const authRoutes = require('./routes/authRoutes');
 const workRoutes = require('./routes/workRoutes');
@@ -15,6 +16,12 @@ app.use(express.urlencoded({ limit: '110mb', extended: true }));
 
 // Database
 connectDB();
+
+// ✅ SERVE DATA FOLDER (PROOFS)
+app.use(
+  '/data',
+  express.static(path.join(__dirname, '../data'))
+);
 
 // Routes
 app.use('/api/auth', authRoutes);

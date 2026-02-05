@@ -69,7 +69,7 @@ router.post('/ml-result', async (req, res) => {
       }
     }
 
-    // ================= SCREEN MONITORING (✅ ADD HERE) =================
+    // ================= SCREEN MONITORING =================
     if (screenData) {
       session.screenEfficiency = Math.max(
         0,
@@ -173,6 +173,21 @@ router.get('/user-summary/:userId', async (req, res) => {
 
   } catch (err) {
     console.error('USER SUMMARY ERROR:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// ================= SESSION DETAILS FOR REPORT (✅ NEW API) =================
+router.get('/sessions/:userId', async (req, res) => {
+  try {
+    const sessions = await WorkSession.find({
+      userId: req.params.userId,
+      status: 'completed'
+    });
+
+    res.json(sessions);
+  } catch (err) {
+    console.error('SESSION FETCH ERROR:', err);
     res.status(500).json({ message: 'Server error' });
   }
 });

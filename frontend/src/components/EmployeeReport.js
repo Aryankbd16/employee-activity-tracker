@@ -2,6 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
+// ================= TIME FORMATTER =================
+const formatHours = (hours) => {
+  if (!hours || hours === 0) return '0 hrs 0 mins';
+
+  const wholeHours = Math.floor(hours);
+  const minutes = Math.round((hours - wholeHours) * 60);
+
+  return `${wholeHours} hrs ${minutes} mins`;
+};
+
 const EmployeeReport = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -68,10 +78,10 @@ const EmployeeReport = () => {
             Employee Efficiency :- {summary.averageEfficiency}%
           </div>
           <div>
-            Employee Work Time :- {summary.totalWorkHours} hrs
+            Employee Work Time :- {formatHours(summary.totalWorkHours)}
           </div>
           <div>
-            Total Time Wasted :- {summary.totalWastedHours} hrs
+            Total Time Wasted :- {formatHours(summary.totalWastedHours)}
           </div>
         </div>
 
@@ -85,7 +95,7 @@ const EmployeeReport = () => {
             gap: '20px'
           }}
         >
-          <button className="btn btn-blue" style={{ width: '200px' }}>
+          <button className="btn btn-blue" style={{ width: '200px' }} onClick={() => navigate(`/report/${id}`)}>
             Download Report
           </button>
 

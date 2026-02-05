@@ -11,6 +11,7 @@ import StartWork from './components/StartWork';
 import Working from './components/Working';
 import Admin from './components/Admin';
 import EmployeeReport from './components/EmployeeReport';
+import Report from './components/Report';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/working" element={<Working />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/employee-report/:id" element={<EmployeeReport />} />
+        <Route path="/report/:id" element={<Report />} />
       </Routes>
     </div>
   );
