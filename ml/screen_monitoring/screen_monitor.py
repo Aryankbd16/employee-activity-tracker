@@ -30,7 +30,8 @@ WORK_APPS = [
     "visual studio", "vscode", "pycharm", "intellij",
     "android studio", "eclipse", "netbeans",
     "terminal", "cmd", "powershell",
-    "github", "git", "docker"
+    "github", "git", "docker",
+    "teams", "microsoft teams"
 ]
 
 # ---------- UNWANTED / DISTRACTING APPLICATIONS ----------

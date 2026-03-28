@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 // ================= TIME FORMATTER =================
@@ -15,6 +15,10 @@ const formatHours = (hours) => {
 const EmployeeReport = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const location = useLocation();
+
+  // ✅ Detect if admin is viewing
+  const isAdminView = location.pathname.includes('/employee-report');
 
   const [employee, setEmployee] = useState(null);
   const [summary, setSummary] = useState(null);
@@ -95,14 +99,21 @@ const EmployeeReport = () => {
             gap: '20px'
           }}
         >
-          <button className="btn btn-blue" style={{ width: '200px' }} onClick={() => navigate(`/report/${id}`)}>
-            Download Report
-          </button>
+          {/* ✅ Show only for Admin */}
+          {isAdminView && (
+            <button
+              className="btn btn-blue"
+              style={{ width: '200px' }}
+              onClick={() => navigate(`/report/${id}`)}
+            >
+              Download Report
+            </button>
+          )}
 
           <button
             className="btn btn-blue"
             style={{ width: '200px' }}
-            onClick={() => navigate('/admin')}
+            onClick={() => navigate(isAdminView ? '/admin' : '/profile')}
           >
             Back
           </button>

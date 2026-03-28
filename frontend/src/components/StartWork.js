@@ -56,26 +56,43 @@ const StartWork = () => {
         <div className="start-work-page">
             <header className="page-header">Start Work</header>
 
-            <div className="green-container">
-                <div style={{ height: '100%' }}></div>
+            <div className="green-container start-work-container">
+                <div className="monitoring-card">
+                    <div className="monitoring-header">
+                        <h2>Monitoring & Permissions</h2>
+                        <p>Please review the data points we collect during your work session.</p>
+                    </div>
+                    
+                    <ul className="monitoring-list">
+                        <li><span className="monitoring-icon">🖥️</span> <span>Screen Activity Monitoring</span></li>
+                        <li><span className="monitoring-icon">📱</span> <span>Active Application Tracking</span></li>
+                        <li><span className="monitoring-icon">⌨️</span> <span>Typing Activity (Keystrokes pattern, not content)</span></li>
+                        <li><span className="monitoring-icon">🖱️</span> <span>Mouse Movement Tracking</span></li>
+                        <li><span className="monitoring-icon">👤</span> <span>Face Verification (if enabled in system)</span></li>
+                        <li><span className="monitoring-icon">📈</span> <span>Productivity / Efficiency Analysis</span></li>
+                    </ul>
+                    
+                    <div className="monitoring-disclaimer">
+                        <span className="disclaimer-icon">🔒</span>
+                        <p>This system only tracks activity for productivity analysis and does not store sensitive personal data.</p>
+                    </div>
+                </div>
 
-                <div style={{ textAlign: 'center', marginTop: 'auto', paddingTop: '300px' }}>
+                <div className="approve-action">
                     <button
-                        className="btn btn-blue"
+                        className={`btn btn-blue ${approved ? 'btn-approved' : ''}`}
                         onClick={() => setApproved(true)}
-                        style={{ marginBottom: '20px' }}
                     >
-                        I Approve
+                        {approved ? "✓ Approved" : "I Approve"}
                     </button>
                 </div>
             </div>
 
-            <div style={{ textAlign: 'center', marginTop: '20px' }}>
+            <div className="start-action">
                 <button
                     type="button"
-                    className="btn btn-green"
+                    className="btn btn-green btn-start"
                     disabled={!approved || loading}
-                    style={{ opacity: approved ? 1 : 0.5 }}
                     onClick={handleStartWork}
                 >
                     {loading ? "Starting..." : "Start"}

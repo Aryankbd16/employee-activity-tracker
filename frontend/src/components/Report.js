@@ -137,51 +137,72 @@ const Report = () => {
   };
 
   return (
-    
-    
-
     <div className="report-page">
+      <div className="report-top-bar">
+        <button
+          className="btn btn-blue btn-back"
+          onClick={() => navigate(-1)}
+        >
+          &larr; Back
+        </button>  
+      </div>
 
-      <button
-        className="btn btn-blue"
-        style={{ marginBottom: '20px', marginRight: '10px' }}
-        onClick={() => navigate(-1)}
-      >
-        Back
-      </button>  
-      <button
-        className="btn btn-blue"
-        style={{ marginBottom: '20px' }}
-        onClick={downloadPDF}
-      >
-        Download PDF
-      </button>
-
-      <div ref={reportRef} style={{ padding: '20px' }}>
-        <h1>{employee.name} – Work Report</h1>
-
+      <div className="report-content" ref={reportRef}>
+        
         {/* ================= BASIC INFO ================= */}
-        <img
-          src={employee.photo}
-          crossOrigin="anonymous"   // ✅ REQUIRED
-          alt="Employee"
-          style={{ width: '120px', borderRadius: '50%' }}
-        />
-        <p>Email: {employee.email}</p>
+        <div className="profile-card">
+          <img
+            src={employee.photo}
+            crossOrigin="anonymous"   // ✅ REQUIRED
+            alt="Employee"
+            className="profile-avatar"
+          />
+          <div className="profile-details">
+            <h1 className="profile-name">{employee.name}</h1>
+            <p className="profile-email">{employee.email}</p>
+            <span className="profile-badge">Work Report</span>
+          </div>
+        </div>
 
         {/* ================= SUMMARY ================= */}
-        <h2>Summary</h2>
-        <p>Total Work Time: {formatHours(summary.totalWorkHours)}</p>
-        <p>Total Wasted Time: {formatHours(summary.totalWastedHours)}</p>
-        <p>Average Efficiency: {summary.averageEfficiency}%</p>
+        <div className="summary-section">
+          <h2 className="section-title">Performance Summary</h2>
+          <div className="stats-grid">
+            <div className="stat-card">
+              <span className="stat-label">Work Time</span>
+              <span className="stat-value">{formatHours(summary.totalWorkHours)}</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-label">Wasted Time</span>
+              <span className="stat-value">{formatHours(summary.totalWastedHours)}</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-label">Efficiency</span>
+              <span className="stat-value">{summary.averageEfficiency}%</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ================= ACTIONS ================= */}
+        <div className="report-actions" data-html2canvas-ignore="true">
+          <button
+            className="btn btn-blue btn-download"
+            onClick={downloadPDF}
+          >
+            Download Report
+          </button>
+        </div>
 
         {/* ================= PIE CHART ================= */}
-        <div style={{ width: '300px', margin: '30px auto' }}>
-          <Pie data={pieData} />
+        <div className="chart-section">
+          <h2>Time Distribution</h2>
+          <div className="chart-container">
+            <Pie data={pieData} />
+          </div>
         </div>
 
         {/* ================= PROOFS ================= */}
-        <h2>Proofs</h2>
+        <h2 className="section-title">Proofs</h2>
 
         <h3>Typing Proofs</h3>
         {sessions.map(s =>

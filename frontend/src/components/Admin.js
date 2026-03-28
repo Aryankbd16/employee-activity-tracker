@@ -46,7 +46,12 @@ const Admin = () => {
               marginBottom: '20px',
               cursor: 'pointer'
             }}
-            onClick={() => navigate(`/employee-report/${emp._id}`)}
+            // ✅ ONLY CHANGE: passing admin state
+            onClick={() =>
+              navigate(`/employee-report/${emp._id}`, {
+                state: { isAdmin: true }
+              })
+            }
           >
             {/* PHOTO */}
             <div
