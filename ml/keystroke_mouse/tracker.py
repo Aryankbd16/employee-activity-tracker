@@ -143,7 +143,7 @@ class KeystrokeMouseTracker:
         if len(self.key_timestamps) < 10:
             return
 
-        diffs = [
+        diffs = [ 
             self.key_timestamps[i+1] - self.key_timestamps[i]
             for i in range(len(self.key_timestamps) - 1)
         ]
